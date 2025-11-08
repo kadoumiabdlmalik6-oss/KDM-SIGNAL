@@ -1,4 +1,72 @@
 
 import { Signal, SignalStatus, SignalTag, SignalType } from './types';
 
-export const MOCK_SIGNALS: Signal[] = [];
+const dateHoursAgo = (hours: number) => new Date(Date.now() - hours * 60 * 60 * 1000).toISOString();
+
+export const MOCK_SIGNALS: Signal[] = [
+    {
+        id: 'sig_btc_1',
+        symbol: 'BTC/USDT',
+        type: SignalType.BUY,
+        entry: 68500.50,
+        stop_loss: 67000.00,
+        take_profits: [69500, 70500, 72000],
+        confidence: 0.85,
+        tag: SignalTag.VIP,
+        notes: 'Expecting a breakout above the current resistance level. Market sentiment is bullish.',
+        created_at: dateHoursAgo(1),
+        status: SignalStatus.ACTIVE,
+    },
+    {
+        id: 'sig_eth_1',
+        symbol: 'ETH/USDT',
+        type: SignalType.SELL,
+        entry: 3800.00,
+        stop_loss: 3950.00,
+        take_profits: [3700, 3600],
+        confidence: 0.78,
+        tag: SignalTag.FREE,
+        notes: 'Potential bearish divergence on the 4H chart. Looking for a short-term correction.',
+        created_at: dateHoursAgo(5),
+        status: SignalStatus.ACHIEVED,
+    },
+    {
+        id: 'sig_sol_1',
+        symbol: 'SOL/USDT',
+        type: SignalType.BUY,
+        entry: 165.20,
+        stop_loss: 160.10,
+        take_profits: [170, 175, 182],
+        confidence: 0.90,
+        tag: SignalTag.BOTH,
+        notes: 'Strong support found at the $160 level. High volume indicates accumulation.',
+        created_at: dateHoursAgo(26),
+        status: SignalStatus.CANCELED,
+    },
+    {
+        id: 'sig_ada_1',
+        symbol: 'ADA/USDT',
+        type: SignalType.BUY,
+        entry: 0.45,
+        stop_loss: 0.42,
+        take_profits: [0.48, 0.50, 0.55],
+        confidence: 0.70,
+        tag: SignalTag.FREE,
+        notes: 'Cardano is showing signs of reversal after a long downtrend. A good risk/reward opportunity.',
+        created_at: dateHoursAgo(50),
+        status: SignalStatus.ACTIVE,
+    },
+    {
+        id: 'sig_xrp_1',
+        symbol: 'XRP/USDT',
+        type: SignalType.SELL,
+        entry: 0.52,
+        stop_loss: 0.55,
+        take_profits: [0.50, 0.48],
+        confidence: 0.65,
+        tag: SignalTag.VIP,
+        notes: 'Failed to break major resistance. Expecting a pullback to lower support zones.',
+        created_at: dateHoursAgo(120),
+        status: SignalStatus.ACTIVE,
+    }
+];
