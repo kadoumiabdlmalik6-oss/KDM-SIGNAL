@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { MOCK_SIGNALS } from './constants';
 import { Page, Signal, SignalTag, SignalStatus } from './types';
 import SignalCard from './components/SignalCard';
@@ -10,7 +10,17 @@ import NotificationBell from './components/NotificationBell';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<Page>('landing');
-  const [signals, setSignals] = useState<Signal[]>(MOCK_SIGNALS);
+  
+  const [signals, setSignals] = useState<Signal[]>(() => {
+    try {
+      const savedSignals = window.localStorage.getItem('kdm_signals');
+      return savedSignals ? JSON.parse(savedSignals) : MOCK_SIGNALS;
+    } catch (error) {
+      console.error("Could not parse signals from localStorage", error);
+      return MOCK_SIGNALS;
+    }
+  });
+  
   const [selectedSignal, setSelectedSignal] = useState<Signal | null>(null);
   const [signalToEdit, setSignalToEdit] = useState<Signal | null>(null);
   const [filter, setFilter] = useState<SignalTag | 'all'>('all');
@@ -18,6 +28,14 @@ const App: React.FC = () => {
   const [showAdminLogin, setShowAdminLogin] = useState(false);
   const [adminPassword, setAdminPassword] = useState('');
   const [adminPasswordError, setAdminPasswordError] = useState('');
+
+  useEffect(() => {
+    try {
+      window.localStorage.setItem('kdm_signals', JSON.stringify(signals));
+    } catch (error) {
+      console.error("Could not save signals to localStorage", error);
+    }
+  }, [signals]);
 
   const handleSelectChannel = (channel: SignalTag) => {
     setChannelAccess(channel);
