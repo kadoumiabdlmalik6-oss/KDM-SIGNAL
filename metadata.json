@@ -1,0 +1,5 @@
+{
+  "name": "KDM Signal",
+  "description": "An elegant trading signals application that displays buy/sell signals with detailed entry points, profit targets, and stop-loss levels. Features a dark mode UI with gold accents for a premium feel.",
+  "requestFramePermissions": []
+}
