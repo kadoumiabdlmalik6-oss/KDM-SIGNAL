@@ -32,9 +32,9 @@ const SignalDetail: React.FC<SignalDetailProps> = ({ signal, onBack }) => {
         case SignalStatus.ACTIVE:
             return { text: 'Active', color: 'bg-blue-500' };
         case SignalStatus.ACHIEVED:
-            return { text: 'Achieved', color: 'bg-green-500' };
+            return { text: 'Achieved (TP)', color: 'bg-green-500' };
         case SignalStatus.CANCELED:
-            return { text: 'Canceled', color: 'bg-red-500' };
+            return { text: 'Canceled (SL)', color: 'bg-red-500' };
         default:
             return { text: 'Unknown', color: 'bg-gray-500' };
     }

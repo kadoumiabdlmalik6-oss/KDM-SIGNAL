@@ -63,8 +63,8 @@ const SignalCard: React.FC<SignalCardProps> = ({ signal, onClick }) => {
           </div>
           <div className={`${getStatusStyles(signal.status)} text-xs font-bold uppercase px-3 py-1 rounded-full`}>
             {signal.status === SignalStatus.ACTIVE && 'Active'}
-            {signal.status === SignalStatus.ACHIEVED && 'Achieved'}
-            {signal.status === SignalStatus.CANCELED && 'Canceled'}
+            {signal.status === SignalStatus.ACHIEVED && 'Achieved (TP)'}
+            {signal.status === SignalStatus.CANCELED && 'Canceled (SL)'}
           </div>
         </div>
         
