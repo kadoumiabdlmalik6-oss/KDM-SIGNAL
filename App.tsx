@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo, useEffect } from 'react';
 import { MOCK_SIGNALS } from './constants';
 import { Page, Signal, SignalTag, SignalStatus } from './types';
@@ -67,7 +68,7 @@ const App: React.FC = () => {
   
   const handleAdminLoginAttempt = (e: React.FormEvent) => {
     e.preventDefault();
-    if (adminPassword === 'adminkdm321') {
+    if (adminPassword === 'admin123') {
       setCurrentPage('admin_dashboard');
       setShowAdminLogin(false);
     } else {
